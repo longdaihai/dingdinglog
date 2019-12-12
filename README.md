@@ -3,14 +3,14 @@ php plugin for dingtalk robot
 
 ## install
 ```
-composer require bingher/ding-bot
+composer require longdaihai/dingdinglog
 ```
 
 ## use
 参考钉钉自定义机器人[接口文档](https://open-doc.dingtalk.com/microapp/serverapi2/qf2nxq)
 ```
 //实例化
-$ding = new \bingher\ding\DingBot;
+$ding = new \longdaihai\ding\DingBot;
 
 //发送文本消息
 $res = $ding->text('hello hello');
