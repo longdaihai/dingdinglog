@@ -91,7 +91,7 @@ return [
         // 其它日志通道配置
         'ding' => [
             // 日志记录方式
-            'type'           => '\\bingher\\ding\\DingLog',
+            'type'           => '\\longdaihai\\ding\\DingLog',
             // 你申请的钉钉机器人api
             'webhook' => 'https://oapi.dingtalk.com/robot/send?access_token=xxxx',
             // @人的手机号
