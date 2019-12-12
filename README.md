@@ -1,7 +1,7 @@
 # ding-bot
 php plugin for dingtalk robot
 
-## install
+## 安装
 ```
 composer require longdaihai/dingdinglog
 ```
@@ -48,7 +48,7 @@ $res = $ding->makeLink(
     ->makeLink('你我所熟知的那个维基百科，出事情了','https://bh.sb/post/46120/','https://abiko.loli.net/thumb/?src=https://dulei.si/files/2019/07/28/006f52e9102a8d3be2fe5614f42ba989.jpeg&w=240&h=180&zc=1')
     ->feedCard();
 ```
-## log driver for thinkphp6
+## thinkphp6 日志配置方法
 ### config
 ```
 # config/log.php
@@ -92,15 +92,17 @@ return [
         'ding' => [
             // 日志记录方式
             'type'           => '\\bingher\\ding\\DingLog',
-            'webhook' => 'https://oapi.dingtalk.com/robot/send?access_token=xxxx', //你申请的钉钉机器人api
-            'at' => [], //接收人手机号
+            // 你申请的钉钉机器人api
+            'webhook' => 'https://oapi.dingtalk.com/robot/send?access_token=xxxx',
+            // @人的手机号
+            'at' => [],
         ],
     ],
 
 ];
 ```
 > 因为钉钉群机器人每分钟最多20条信息,所以建议将error级别的日志使用钉钉来发送,可以及时收到错误提醒
-### demo
+### 示例
 ```
 \think\facade\Log::info('有点事情');
 \think\facade\Log::notice('有点问题');
