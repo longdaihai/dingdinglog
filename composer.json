@@ -3,13 +3,16 @@
     "description": "dingding bot plugin",
     "type": "library",
     "license": "MIT",
+    "version": "1.0.0",
+    "keywords": ["longdaihai","php","dingding","钉钉","机器人"],
     "authors": [
         {
             "name": "HanSheng",
-            "email": "164897033@qq.com"
+            "email": "164897033@qq.com",
+            "homepage": "https://gitee.com/haiyunyi_cn"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
         "php": ">=7.0"
     },

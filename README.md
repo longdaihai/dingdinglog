@@ -1,16 +1,17 @@
-# ding-bot
+# 钉钉机器人消息通知
 php plugin for dingtalk robot
 
 ## 安装
 ```
-composer require longdaihai/dingdinglog
+composer require longdaihai/dingdinglog:dev-master
 ```
 
-## use
-参考钉钉自定义机器人[接口文档](https://open-doc.dingtalk.com/microapp/serverapi2/qf2nxq)
+## 参考
+- 参考钉钉自定义机器人[接口文档](https://open-doc.dingtalk.com/microapp/serverapi2/qf2nxq)
+## 可调用的方法
 ```
 //实例化
-$ding = new \longdaihai\ding\DingBot;
+$ding = new \longdaihai\ding\DingBot(['webhook'=>'https://oapi.dingtalk.com/robot/send......']);
 
 //发送文本消息
 $res = $ding->text('hello hello');
@@ -48,7 +49,34 @@ $res = $ding->makeLink(
     ->makeLink('你我所熟知的那个维基百科，出事情了','https://bh.sb/post/46120/','https://abiko.loli.net/thumb/?src=https://dulei.si/files/2019/07/28/006f52e9102a8d3be2fe5614f42ba989.jpeg&w=240&h=180&zc=1')
     ->feedCard();
 ```
-## thinkphp6 日志配置方法
+
+## 通用使用教程
+### 入口文件
+```
+require_once './vendor/autoload.php';
+```
+### 新建一个类继承DingBot
+```
+use longdaihai\ding\DingBot;
+
+class Dingding extends DingBot
+{
+    public function __construct()
+    {
+        parent::__construct([
+            'webhook' => 'https://oapi.dingtalk.com/robot/send?access_token=3707d61374a8c4369ddbeae8eedbf93a1772379dee6d75a8f66951e5fc6a8523'
+        ]);
+    }
+}
+```
+### 使用
+```
+$ding = new Dingding();
+$res = $ding->text("1111111111");
+```
+
+
+## thinkphp6.0.x 日志配置方法
 ### config
 ```
 # config/log.php
@@ -91,7 +119,7 @@ return [
         // 其它日志通道配置
         'ding' => [
             // 日志记录方式
-            'type'           => '\\longdaihai\\ding\\DingLog',
+            'type'           => '\\bingher\\ding\\DingLog',
             // 你申请的钉钉机器人api
             'webhook' => 'https://oapi.dingtalk.com/robot/send?access_token=xxxx',
             // @人的手机号
@@ -109,6 +137,3 @@ return [
 \think\facade\Log::error('代志大条了');
 ```
 > 仅error消息会通知到钉钉
-
-![](images/error1.png)
-![](images/error2.png)

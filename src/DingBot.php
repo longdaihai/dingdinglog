@@ -34,11 +34,18 @@ class DingBot
      * @var string
      */
     protected $error = '';
+
     function __construct(array $config = [])
     {
+        if (empty($config)){
+            throw new \Exception("1配置webhook为空：格式 ['webhook'=>'http://asdsd']");
+        }
         if (empty($this->webhook)) {
-        	if(isset($config['webhook']))
-            	$this->webhook = $config['webhook'];
+        	if(isset($config['webhook'])){
+                $this->webhook = $config['webhook'];
+            }else{
+                throw new \Exception("2配置webhook为空：格式 ['webhook'=>'http://asdsd']");
+            }
         }
     }
 
